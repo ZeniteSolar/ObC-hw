@@ -1,0 +1,9 @@
+Added Component: Designator=R30B(RESTH_AXIAL-0.4)
+Added Pin To Net: NetName=NetR29_1 Pin=R30B-1
+Added Pin To Net: NetName=GND Pin=R30B-2
+Change Class Name : Old Net Name=ArduinoUnoShield New Net Name=arduinoshield
+Change Class Name : Old Net Name=sensors New Net Name=sensor
+Added Member To Class: ClassName=sensor Member=Component R30B Carbon Film
+Change Room Name: Old Name=Fontes New Name=supplies
+Added Room: Name=arduinoshield
+Added Room: Name=sensor

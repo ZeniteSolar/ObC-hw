@@ -1,0 +1,76 @@
+Protel Design System Design Rule Check
+PCB File : G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc
+Date     : 5/8/2014
+Time     : 8:42:14 PM
+
+Processing Rule : Differential Pairs Uncoupled Length using the Gap Constraints (Min=10mil) (Max=10mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=35mil) (Max=60mil) (Preferred=45mil) (InNet('5V'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=45mil) (Max=80mil) (Preferred=60mil) (InNet('-15V'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=45mil) (Max=80mil) (Preferred=60mil) (InNet('+15V'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=60mil) (Max=100mil) (Preferred=80mil) (InNet('+12V'))
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=8mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=31.496mil) (Max=250mil) (All)
+Rule Violations :0
+
+Processing Rule : Pads and Vias to follow the Drill pairs settings
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 10mil, Vertical Gap = 30mil ) (All),(All) 
+Rule Violations :0
+
+Processing Rule : Routing Via (MinHoleWidth=31.496mil) (MaxHoleWidth=250mil) (PreferredHoleWidth=35.433mil) (MinWidth=60mil) (MaxWidth=250mil) (PreferedWidth=60mil) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=35mil) (Max=60mil) (Preferred=45mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=35mil) (Air Gap=8mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=12mil) (All),(All)
+   Violation between Pad U9-4(9331.928mil,4706.072mil)  Multi-Layer and 
+                     Pad U9-5(9331.928mil,4639.142mil)  Multi-Layer
+   Violation between Pad U9-3(9331.928mil,4773mil)  Multi-Layer and 
+                     Pad U9-4(9331.928mil,4706.072mil)  Multi-Layer
+   Violation between Pad U9-2(9331.928mil,4839.93mil)  Multi-Layer and 
+                     Pad U9-3(9331.928mil,4773mil)  Multi-Layer
+   Violation between Pad U9-1(9331.928mil,4906.858mil)  Multi-Layer and 
+                     Pad U9-2(9331.928mil,4839.93mil)  Multi-Layer
+   Violation between Pad U10-4(9331.928mil,3471.072mil)  Multi-Layer and 
+                     Pad U10-5(9331.928mil,3404.142mil)  Multi-Layer
+   Violation between Pad U10-3(9331.928mil,3538mil)  Multi-Layer and 
+                     Pad U10-4(9331.928mil,3471.072mil)  Multi-Layer
+   Violation between Pad U10-2(9331.928mil,3604.93mil)  Multi-Layer and 
+                     Pad U10-3(9331.928mil,3538mil)  Multi-Layer
+   Violation between Pad U10-1(9331.928mil,3671.858mil)  Multi-Layer and 
+                     Pad U10-2(9331.928mil,3604.93mil)  Multi-Layer
+   Violation between Pad U2-2(3520mil,6325mil)  Multi-Layer and 
+                     Pad U2-3(3570mil,6325mil)  Multi-Layer
+   Violation between Pad U2-1(3470mil,6325mil)  Multi-Layer and 
+                     Pad U2-2(3520mil,6325mil)  Multi-Layer
+Rule Violations :10
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+
+Violations Detected : 10
+Time Elapsed        : 00:00:01

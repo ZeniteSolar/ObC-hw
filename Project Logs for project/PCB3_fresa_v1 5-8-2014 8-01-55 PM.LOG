@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=AD3 Pin=U1-2
+Removed Pin From Net: NetName=AD5 Pin=U1-4
+Removed Pin From Net: NetName=AD1 Pin=U1-5
+Removed Pin From Net: NetName=AD2 Pin=U1-6
+Added Pin To Net: NetName=AD5 Pin=U1-2
+Added Pin To Net: NetName=AD3 Pin=U1-4
+Added Pin To Net: NetName=AD2 Pin=U1-5
+Added Pin To Net: NetName=AD1 Pin=U1-6
+Added Room: Name=sensor

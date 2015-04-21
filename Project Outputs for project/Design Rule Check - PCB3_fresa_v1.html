@@ -1,0 +1,392 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body {
+			font-family : verdana;
+		}
+		td, th {
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;
+		}
+		th {
+			background-color : #A6CAF0;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+		}
+		
+		.DRC_summary_header {							
+			padding-bottom : 0.1em;
+			border : 0px solid black;							
+			width: 100%;
+                        align: right;
+                        
+		}
+
+		.DRC_summary_header_col1, 
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3
+		{
+			color : black;
+			font-size:150%;
+                        padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2: 0em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top;
+			font-weight: bold;				
+		}
+		
+		.DRC_summary_header_col1 	
+		{		                       
+			text-align: right;
+                        width: auto;	
+		}
+
+		.DRC_summary_header_col2 	
+		{		
+			text-align: center;	
+		}
+
+		.DRC_summary_header_col3 	
+		{		
+			text-align: left;	
+		}
+
+
+		
+		.header_holder
+		{
+		Width = 100%;
+		border = 0px solid green;
+		padding = 0;
+		}
+		
+		
+		
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+			left:0;
+			top:0;
+			padding-top : 0.1em;			
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top
+
+		}
+		.front_matter {	
+			
+			margin-top: 5px;
+ 			margin-left: 0px;					 			
+ 			horizontal-align: left;
+		}
+				
+		
+		.front_matter_column1 {
+			width : 10em;	
+			text-align  : right;
+			padding-right:0.1em;
+			
+		}
+		
+		.front_matter_column2 {
+                        width: 0.1em;
+			align: center;
+			text-align : center;
+			margin-right  : 0.1em;	
+			margin-left   : 0.1em;
+		}
+		.front_matter_column3 {
+			width         : auto;  
+			text-align    : left;	
+			margin-right  : 0.5em;				
+		}
+		
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Documents and Settings\All Users\Documents\Altium\AD 10\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td Style="width:70%">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">5/8/2014</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">8:42:14 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc" class="file"><acronym title="G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc">G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td Style="Width:30%">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3" style="color : red">10</td></tr>
+</table>
+</td>
+</table>
+<hr><a name="IDASI0MC"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAEJ0MC">Differential Pairs Uncoupled Length using the Gap Constraints (Min=10mil) (Max=10mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAKJ0MC">Width Constraint (Min=35mil) (Max=60mil) (Preferred=45mil) (InNet('5V'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAQJ0MC">Width Constraint (Min=45mil) (Max=80mil) (Preferred=60mil) (InNet('-15V'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAWJ0MC">Width Constraint (Min=45mil) (Max=80mil) (Preferred=60mil) (InNet('+15V'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA2J0MC">Width Constraint (Min=60mil) (Max=100mil) (Preferred=80mil) (InNet('+12V'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDACK0MC">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAIK0MC">Hole To Hole Clearance (Gap=8mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAOK0MC">Hole Size Constraint (Min=31.496mil) (Max=250mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAUK0MC">Pads and Vias to follow the Drill pairs settings</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDA0K0MC">Component Clearance Constraint ( Horizontal Gap = 10mil, Vertical Gap = 30mil ) (All),(All) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAAL0MC">Routing Via (MinHoleWidth=31.496mil) (MaxHoleWidth=250mil) (PreferredHoleWidth=35.433mil) (MinWidth=60mil) (MaxWidth=250mil) (PreferedWidth=60mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAGL0MC">Width Constraint (Min=35mil) (Max=60mil) (Preferred=45mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAML0MC">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=35mil) (Air Gap=8mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDASL0MC">Clearance Constraint (Gap=12mil) (All),(All)</a></td>
+<td class="column2">10</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDASO0MC">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAYO0MC">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">10</td>
+</tr>
+</table><br><hr><a name="IDASL0MC"><table>
+<tr>
+<th style="text-align : left" colspan="2" class="rule">Clearance Constraint (Gap=12mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4674.513mil|Location2.Y=4737.631mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4674.513mil|Location2.Y=4737.631mil|Absolute=True">Pad U9-4(9331.928mil,4706.072mil)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4607.583mil|Location2.Y=4670.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4607.583mil|Location2.Y=4670.701mil|Absolute=True">Pad U9-5(9331.928mil,4639.142mil)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4741.441mil|Location2.Y=4804.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4741.441mil|Location2.Y=4804.559mil|Absolute=True">Pad U9-3(9331.928mil,4773mil)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4674.513mil|Location2.Y=4737.631mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4674.513mil|Location2.Y=4737.631mil|Absolute=True">Pad U9-4(9331.928mil,4706.072mil)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4808.371mil|Location2.Y=4871.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4808.371mil|Location2.Y=4871.489mil|Absolute=True">Pad U9-2(9331.928mil,4839.93mil)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4741.441mil|Location2.Y=4804.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4741.441mil|Location2.Y=4804.559mil|Absolute=True">Pad U9-3(9331.928mil,4773mil)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4875.299mil|Location2.Y=4938.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4875.299mil|Location2.Y=4938.417mil|Absolute=True">Pad U9-1(9331.928mil,4906.858mil)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4808.371mil|Location2.Y=4871.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=4808.371mil|Location2.Y=4871.489mil|Absolute=True">Pad U9-2(9331.928mil,4839.93mil)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3439.513mil|Location2.Y=3502.631mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3439.513mil|Location2.Y=3502.631mil|Absolute=True">Pad U10-4(9331.928mil,3471.072mil)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3372.583mil|Location2.Y=3435.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3372.583mil|Location2.Y=3435.701mil|Absolute=True">Pad U10-5(9331.928mil,3404.142mil)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3506.441mil|Location2.Y=3569.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3506.441mil|Location2.Y=3569.559mil|Absolute=True">Pad U10-3(9331.928mil,3538mil)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3439.513mil|Location2.Y=3502.631mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3439.513mil|Location2.Y=3502.631mil|Absolute=True">Pad U10-4(9331.928mil,3471.072mil)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3573.371mil|Location2.Y=3636.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3573.371mil|Location2.Y=3636.489mil|Absolute=True">Pad U10-2(9331.928mil,3604.93mil)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3506.441mil|Location2.Y=3569.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3506.441mil|Location2.Y=3569.559mil|Absolute=True">Pad U10-3(9331.928mil,3538mil)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3640.299mil|Location2.Y=3703.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3640.299mil|Location2.Y=3703.417mil|Absolute=True">Pad U10-1(9331.928mil,3671.858mil)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3573.371mil|Location2.Y=3636.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9288.558mil|Location2.X=9375.298mil|Location1.Y=3573.371mil|Location2.Y=3636.489mil|Absolute=True">Pad U10-2(9331.928mil,3604.93mil)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.315mil|Location2.X=3543.685mil|Location1.Y=6281.63mil|Location2.Y=6368.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.315mil|Location2.X=3543.685mil|Location1.Y=6281.63mil|Location2.Y=6368.37mil|Absolute=True">Pad U2-2(3520mil,6325mil)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3546.315mil|Location2.X=3593.685mil|Location1.Y=6281.63mil|Location2.Y=6368.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3546.315mil|Location2.X=3593.685mil|Location1.Y=6281.63mil|Location2.Y=6368.37mil|Absolute=True">Pad U2-3(3570mil,6325mil)  Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td style="width:50%; text-align:left" class="column1"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3446.315mil|Location2.X=3493.685mil|Location1.Y=6281.63mil|Location2.Y=6368.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3446.315mil|Location2.X=3493.685mil|Location1.Y=6281.63mil|Location2.Y=6368.37mil|Absolute=True">Pad U2-1(3470mil,6325mil)  Multi-Layer</acronym></a></td>
+<td style="width:50%; text-align:left" class="column2"><a href="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.315mil|Location2.X=3543.685mil|Location1.Y=6281.63mil|Location2.Y=6368.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=G:\IFSC\PROJETOS\ComputadordeBordo\RELEASE\Altium\Sensors1.1\PCB3_fresa_v1.1A.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.315mil|Location2.X=3543.685mil|Location1.Y=6281.63mil|Location2.Y=6368.37mil|Absolute=True">Pad U2-2(3520mil,6325mil)  Multi-Layer</acronym></a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>

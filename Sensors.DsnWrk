@@ -1,0 +1,8 @@
+[ProjectGroup]
+Version=1.0
+[Project1]
+ProjectPath=..\Sensors.PrjPcb
+[Project2]
+ProjectPath=Library.LibPkg
+[Project3]
+ProjectPath=Altium Arduino UNO R3.PrjPcb

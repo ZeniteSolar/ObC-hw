@@ -1,0 +1,37 @@
+Bill of Material for 
+On 7/14/2014 at 8:00:30 PM
+
+ Comment             Pattern     Quantity  Components
+------------------------------------------------------------------------------
+ AD                  Header 6x1 8.5mm    1    AD1                                               
+ approved sub OK     cap1000u25v      1    C13                          Capacitor SMD Cer 330nF 10% 25V X7R 0805 
+ approved sub OK     cap100n          5    C12, C14, C17, C18, C21      Capacitor SMD Cer 330nF 10% 25V X7R 0805 
+ approved sub OK     cap100u35v       1    C19                          Capacitor SMD Cer 330nF 10% 25V X7R 0805 
+ approved sub OK     cap2200u25v      1    C15                          Capacitor SMD Cer 330nF 10% 25V X7R 0805 
+ approved sub OK     cap33n63v       12    C1, C2, C3, C4, C5, C6, C7   Capacitor SMD Cer 330nF 10% 25V X7R 0805 
+                                           C8, C9, C10, C11, C16
+ approved sub OK     cap470u50v       1    C20                          Capacitor SMD Cer 330nF 10% 25V X7R 0805 
+ Carbon Film         RESTH_AXIAL-0.4   39    R1, R2, R3, R4, R5, R6, R7   Resistor THD Axial 1k Ohm 0.25W 5% Carbon Film 
+                                           R8, R9, R10, R11, R12, R13
+                                           R14, R15, R16, R17, R18, R19
+                                           R20, R21, R22, R23, R24, R25
+                                           R26, R27, R28, R29, R30, R30B
+                                           R31, R32, R33, R34, R35, R36
+                                           R37, R38
+ Header 2            HDR1X2           2    J3, P2                       Header, 2-Pin        
+ Header 3            HDR1X3           1    P1                           Header, 3-Pin        
+ ICSP                ICSP             1    ICSP1                                             
+ INDC_180u_Toroid    Inductor         6    L1, L2, L3, L4, L5, L6       Power Inductor 180µH 10% SMD Toroid 
+ IOH                 Header 10x1 8.5mm    1    IOH1                                              
+ IOL                 Header 8x1 8.5mm    1    IOL1                                              
+ LA150-P             LA150-P          2    U4, U6                       Current Transducer   
+ LED                 LED-3MM-BLUE     4    D3, D4, D5, D6               LED-BLUE-3MM         
+ LM2575-15           T05A             1    U10                          Buck                 
+ LM2577              T05A             1    U9                           Boost                
+ LM324AJ             J014             2    U3, U5                       Quadruple Operational Amplifier 
+ LM35                Z03A             1    U2                           Precision Centigrade Temperature Sensor, 3-pin TO-92 
+ LM7805              T03B             1    U8                           3-Terminal Positive Voltage Regulators, 3-pin TO-220 
+ LV20-P              LV20-P           1    U7                           Voltage Transducer   
+ MUR160              DO-41            2    D1, D2                       Diode 1N4007 1A 1000V THD 
+ POWER_UNO           Header 8x1 8.5mm    1    POWER1                                            
+ TL7726              DIP8-300         1    U1                           Hex Clamping Circuit - Overvoltage Limiter 
